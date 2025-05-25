@@ -1,0 +1,5 @@
+<div id="report-criteria-list">
+  <div *ngFor="let criteria of report.criteriaList" class="report-criteria">
+    <ng-container *ngComponentOutlet="criteria.component"></ng-container>
+  </div>
+</div>

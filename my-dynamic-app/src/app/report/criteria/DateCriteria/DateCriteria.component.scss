@@ -1,0 +1,17 @@
+.full-grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+.full-grid {
+  grid-column: span 12;
+  border: 1px solid #000;
+  border-radius: 12px;
+  color: #2196f3;
+  padding: 20px;
+  margin: 0; // No vertical margin
+  background: #f0f7ff;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+}

@@ -1,0 +1,15 @@
+.report-table-div {
+  grid-column: 1 / span 12;
+  display: grid;
+}
+
+.report-table-result th,
+.report-table-result td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.search-btn-container {
+  text-align: center;
+  margin: 16px 0;
+}

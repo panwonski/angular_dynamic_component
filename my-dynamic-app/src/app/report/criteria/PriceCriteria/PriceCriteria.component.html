@@ -1,0 +1,30 @@
+<div class="full-grid-wrapper">
+  <div class="full-grid">
+
+    <div class="form-group">
+      <label for="minPrice">Min Price</label>
+      <input
+          type="number"
+          id="minPrice"
+          name="minPrice"
+          [(ngModel)]="minPrice"
+          [ngModel]="selectedMinPrice"
+          class="form-control"
+          placeholder="Enter minimum price"
+      />
+    </div>
+    <div class="form-group">
+      <label for="maxPrice">Max Price</label>
+      <input
+          type="number"
+          id="maxPrice"
+          name="maxPrice"
+          [(ngModel)]="maxPrice"
+          [ngModel]="selectedMaxPrice"
+          class="form-control"
+          placeholder="Enter maximum price"
+      />
+    </div>
+
+  </div>
+</div>

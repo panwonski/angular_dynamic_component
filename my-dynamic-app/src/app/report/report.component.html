@@ -1,0 +1,28 @@
+
+<dynamic-report [report]="report">
+</dynamic-report>
+
+<div class="search-btn-container">
+  <button type="button" (click)="onClickSearch()">Search</button>
+</div>
+<div class="report-table-div">
+
+  <table class="report-table-result">
+    <thead>
+    <tr>
+      <th>Lp.</th>
+      <th *ngFor="let header of report.tableHeader">{{ header }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>1</td>
+      <td *ngFor="let header of report.tableHeader">Random</td>
+    </tr>
+
+    </tbody>
+  </table>
+
+</div>
+
+
