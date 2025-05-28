@@ -19,12 +19,15 @@ export class AddressCriteriaComponent implements OnInit {
   @Input() selectedCountry!: string | null;
   @Input() providedStreet!: string | null;
   @Input() providedZipCode!: string | null;
+  @Input() secretField!: string | null;
+  @Input() config!: any;
 
 
   ngOnInit(): void {
     this.loadCities();
     this.loadCountries();
     console.log("AddressCriteriaComponent ngOnInit");
+
   }
 
   constructor() {

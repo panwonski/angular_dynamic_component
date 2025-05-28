@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {FormsModule} from "@angular/forms";
-import {NgForOf} from "@angular/common";
 
 @Component({
   selector: "date-criteria",
@@ -8,8 +7,7 @@ import {NgForOf} from "@angular/common";
   styleUrls: ["./DateCriteria.component.scss"],
   standalone: true,
   imports: [
-    FormsModule,
-    NgForOf
+    FormsModule
   ],
 })
 export class DateCriteriaComponent implements OnInit {
@@ -18,6 +16,7 @@ export class DateCriteriaComponent implements OnInit {
 
   @Input() selectedDateFrom!: Date | null;
   @Input() selectedDateTo!: Date | null;
+  @Input() config!: any;
 
 
   ngOnInit(): void {

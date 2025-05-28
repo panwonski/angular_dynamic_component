@@ -1,5 +1,5 @@
-
-<dynamic-report [report]="report">
+<dynamic-report [report]="report"
+                (formChange)="handleChangeOnDynamicCriteriaForms($event)">
 </dynamic-report>
 
 <div class="search-btn-container">
@@ -25,4 +25,51 @@
 
 </div>
 
+<!--<form [formGroup]="signUpForm" (ngSubmit)="onClickSearch()">-->
+<!--  <label for="first-name">First Name: </label>-->
+<!--  <input id="first-name" type="text" formControlName="name" />-->
 
+<!--  <div-->
+<!--      *ngIf="signUpForm.controls.name.invalid && (signUpForm.controls.name.dirty || signUpForm.controls.name.touched)"-->
+<!--  >-->
+<!--    <div *ngIf="signUpForm.controls.name.errors?.['required']">-->
+<!--      Name is required.-->
+<!--    </div>-->
+<!--    <div *ngIf="signUpForm.controls.name.errors?.['minlength']">-->
+<!--      Name must be at least 5 characters long.-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <br />-->
+
+<!--  <div formGroupName="birthDate">-->
+<!--    <h2>Birth Date</h2>-->
+
+<!--    <label for="day">Day: </label>-->
+<!--    <input id="day" type="text" formControlName="day" />-->
+<!--    <br />-->
+
+<!--    <div-->
+<!--        *ngIf="signUpForm.controls.birthDate.controls.day.invalid && (signUpForm.controls.birthDate.controls.day.dirty || signUpForm.controls.birthDate.controls.day.touched)"-->
+<!--    >-->
+<!--      <div-->
+<!--          *ngIf="signUpForm.controls.birthDate.controls.day.errors?.['required']"-->
+<!--      >-->
+<!--        Day is required.-->
+<!--      </div>-->
+<!--      <div *ngIf="signUpForm.controls.birthDate.controls.day.errors?.['min']">-->
+<!--        Invalid day.-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <label for="month">Month: </label>-->
+<!--    <input id="month" type="text" formControlName="month" />-->
+<!--    <br />-->
+
+<!--    <label for="year">Year: </label>-->
+<!--    <input id="year" type="text" formControlName="year" />-->
+<!--    <br />-->
+
+<!--    <button type="submit" [disabled]="!signUpForm.valid">Submit Profile</button>-->
+<!--  </div>-->
+<!--</form>-->

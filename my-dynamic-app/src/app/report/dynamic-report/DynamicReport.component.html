@@ -1,5 +1,55 @@
 <div id="report-criteria-list">
   <div *ngFor="let criteria of report.criteriaList" class="report-criteria">
-    <ng-container *ngComponentOutlet="criteria.component"></ng-container>
+    <ng-container *ngComponentOutlet="criteria.component; inputs: { config: criteria.config }"></ng-container>
   </div>
 </div>
+
+
+<form [formGroup]="dynamicSignUpForm" (ngSubmit)="onFormSubmit()">
+  <label for="first-name">First Name: </label>
+  <input id="first-name" type="text" formControlName="name"/>
+
+  <div
+      *ngIf="dynamicSignUpForm.get('name')?.invalid && (dynamicSignUpForm.get('name')?.dirty || dynamicSignUpForm.get('name')?.touched)"
+  >
+    <div *ngIf="dynamicSignUpForm.get('name')?.errors?.['required']">
+      Name is required.
+    </div>
+    <div *ngIf="dynamicSignUpForm.get('name')?.errors?.['minlength']">
+      Name must be at least 5 characters long.
+    </div>
+  </div>
+
+  <br/>
+
+  <div formGroupName="dynamicBirthDate">
+    <h2>Birth Date</h2>
+
+    <label for="day">Day: </label>
+    <input id="day" type="text" formControlName="day"/>
+    <br/>
+
+    <div
+        *ngIf="dynamicSignUpForm.get('dynamicBirthDate')?.get('day')?.invalid && (dynamicSignUpForm.get('dynamicBirthDate')?.get('day')?.dirty || dynamicSignUpForm.get('dynamicBirthDate')?.get('day')?.touched)"
+    >
+      <div
+          *ngIf="dynamicSignUpForm.get('dynamicBirthDate')?.get('day')?.errors?.['required']"
+      >
+        Day is required.
+      </div>
+      <div *ngIf="dynamicSignUpForm.get('dynamicBirthDate')?.get('day')?.errors?.['min']">
+        Invalid day.
+      </div>
+    </div>
+
+    <label for="month">Month: </label>
+    <input id="month" type="text" formControlName="month"/>
+    <br/>
+
+    <label for="year">Year: </label>
+    <input id="year" type="text" formControlName="year"/>
+    <br/>
+
+    <button type="submit" [disabled]="!dynamicSignUpForm.valid">Submit Profile</button>
+  </div>
+</form>

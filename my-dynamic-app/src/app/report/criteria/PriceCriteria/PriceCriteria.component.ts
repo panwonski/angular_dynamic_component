@@ -17,6 +17,7 @@ export class PriceCriteriaComponent implements OnInit {
 
   @Input() selectedMinPrice!: number | null;
   @Input() selectedMaxPrice!: number | null;
+  @Input() config!: any;
 
 
 
