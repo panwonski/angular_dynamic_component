@@ -37,33 +37,31 @@ export class ReportTypeDefinition {
         {
           component: AddressCriteriaComponent,
           config: {
-            fields: [
-              {
-                city: {required: true, visible: true},
-                street: {required: false, visible: true},
-                zipCode: {required: false, visible: true},
-                country: {required: false, visible: true},
-                secretField: {required: false, visible: false}
-              }
-            ]
+            fields: {
+              city: {required: true, visible: true},
+              street: {required: false, visible: true},
+              zipCode: {required: false, visible: true},
+              country: {required: true, visible: true},
+              secretField: {required: false, visible: false}
+            }
           }
         },
         {
           component: PriceCriteriaComponent,
           config: {
-            fields: [
-              {minPrice: {required: false, visible: true}},
-              {maxPrice: {required: false, visible: true}}
-            ]
+            fields: {
+              minPrice: {required: false, visible: true},
+              maxPrice: {required: false, visible: true}
+            }
           }
         },
         {
           component: DateCriteriaComponent,
           config: {
-            fields: [
-              {startDate: {required: true, visible: true}},
-              {endDate: {required: true, visible: true}}
-            ]
+            fields: {
+              startDate: {required: true, visible: true},
+              endDate: {required: true, visible: true}
+            }
           }
         }
       ]
@@ -78,19 +76,19 @@ export class ReportTypeDefinition {
         {
           component: PriceCriteriaComponent,
           config: {
-            fields: [
-              {minPrice: {required: false, visible: true}},
-              {maxPrice: {required: false, visible: true}}
-            ]
+            fields: {
+              minPrice: {required: false, visible: true},
+              maxPrice: {required: false, visible: true}
+            }
           }
         },
         {
           component: DateCriteriaComponent,
           config: {
-            fields: [
-              {startDate: {required: false, visible: true}},
-              {endDate: {required: false, visible: true}}
-            ]
+            fields: {
+              startDate: {required: false, visible: true},
+              endDate: {required: false, visible: true}
+            }
           }
         }
       ]
