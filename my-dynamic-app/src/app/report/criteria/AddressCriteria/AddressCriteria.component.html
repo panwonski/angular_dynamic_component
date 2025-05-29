@@ -1,20 +1,24 @@
 <div class="half-grid-wrapper">
   <div class="half-grid">
     <label for="country">Country:</label>
-    <select id="country" [(ngModel)]="selectedCountry" name="country">
+    <select id="country" [value]="selectedCountry()" (change)="selectedCountry.set($any($event.target).value)">
+      <option value="" disabled>Select a country</option> <!-- no 'selected' or 'hidden' -->
       <option *ngFor="let c of countryList" [value]="c">{{ c }}</option>
     </select>
 
     <label for="city">City:</label>
-    <select id="city" [(ngModel)]="selectedCity" name="city">
+    <select id="city" [value]="selectedCity()" (change)="selectedCity.set($any($event.target).value)">
+      <option value="" disabled>Select a city</option> <!-- placeholder -->
       <option *ngFor="let city of cityList" [value]="city">{{ city }}</option>
     </select>
   </div>
+
   <div class="half-grid">
     <label for="street">Street:</label>
-    <input id="street" type="text" [(ngModel)]="providedStreet" name="street"/>
+    <input id="street" type="text" [value]="providedStreet()" (input)="providedStreet.set($any($event.target).value)" />
 
     <label for="zipCode">Zip Code:</label>
-    <input id="zipCode" type="text" [(ngModel)]="providedZipCode" name="zipCode"/>
+    <input id="zipCode" type="text" [value]="providedZipCode()"
+      (input)="providedZipCode.set($any($event.target).value)" />
   </div>
 </div>

@@ -1,9 +1,11 @@
 <div class="full-grid-wrapper">
   <div class="full-grid">
     <label for="dateFrom">Date From:</label>
-    <input id="dateFrom" type="date" [(ngModel)]="dateFrom" name="dateFrom"/>
+    <input *ngIf="config?.fields?.startDate?.visible" id="dateFrom" type="date" [value]="startDate()"
+      (input)="startDate.set($any($event.target).value)" />
 
     <label for="dateTo">Date To:</label>
-    <input id="dateTo" type="date" [(ngModel)]="dateTo" name="dateTo"/>
+    <input *ngIf="config?.fields?.endDate?.visible" id="dateTo" type="date" [value]="endDate()"
+      (input)="endDate.set($any($event.target).value)" />
   </div>
 </div>
