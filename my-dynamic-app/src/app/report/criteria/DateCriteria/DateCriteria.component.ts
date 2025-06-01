@@ -1,30 +1,42 @@
-import {Component, Input, OnInit} from "@angular/core";
-import {FormsModule} from "@angular/forms";
-import {NgForOf} from "@angular/common";
+import {
+  Component,
+  Input,
+  OnInit,
+  signal,
+  Signal,
+  effect,
+} from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { NgForOf, CommonModule } from '@angular/common';
+import { criteriaService } from '../../reportService/criteriaService';
 
 @Component({
-  selector: "date-criteria",
-  templateUrl: "./DateCriteria.component.html",
-  styleUrls: ["./DateCriteria.component.scss"],
+  selector: 'date-criteria',
+  templateUrl: './DateCriteria.component.html',
+  styleUrls: ['./DateCriteria.component.scss'],
   standalone: true,
   imports: [
     FormsModule,
-    NgForOf
+    CommonModule,
+    // NgForOf
   ],
 })
 export class DateCriteriaComponent implements OnInit {
-  dateFrom: string = "";
-  dateTo: string = "";
+  @Input() config: any;
 
-  @Input() selectedDateFrom!: Date | null;
-  @Input() selectedDateTo!: Date | null;
+  startDate = signal<string | null>(null);
+  endDate = signal<string | null>(null);
 
-
-  ngOnInit(): void {
-    console.log("DateCriteriaComponent ngOnInit");
+  constructor(private criteria_Service: criteriaService) {
+    effect(() => {
+      this.criteria_Service.updateDateCriteria({
+        startDate: this.startDate(),
+        endDate: this.endDate(),
+      });
+    });
   }
 
-  constructor() {
-    console.log("DateCriteriaComponent initialized");
+  ngOnInit(): void {
+    console.log('DateCriteriaComponent ngOnInit');
   }
 }

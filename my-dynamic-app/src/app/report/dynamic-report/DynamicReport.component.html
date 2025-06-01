@@ -1,5 +1,5 @@
-<div id="report-criteria-list">
+<div id="report-criteria-list" *ngIf="report">
   <div *ngFor="let criteria of report.criteriaList" class="report-criteria">
-    <ng-container *ngComponentOutlet="criteria.component"></ng-container>
+    <ng-container *ngComponentOutlet="criteria.component; inputs: { config: criteria.config }"></ng-container>
   </div>
 </div>

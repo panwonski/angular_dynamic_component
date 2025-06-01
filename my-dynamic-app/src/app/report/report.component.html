@@ -1,28 +1,40 @@
-
 <dynamic-report [report]="report">
 </dynamic-report>
 
 <div class="search-btn-container">
-  <button type="button" (click)="onClickSearch()">Search</button>
+  <button class="custom-search-btn" type="button" (click)="onClickSearch()">🔍 Search</button>
 </div>
-<div class="report-table-div">
 
-  <table class="report-table-result">
+
+
+<!-- Table showing all data in one horizontal row -->
+<div *ngIf="formData" style="margin-top: 20px; margin-bottom: 20px;">
+  <h3>Collected Form Data</h3>
+
+  <table border="1" cellpadding="8" cellspacing="0" style="width: 100%;">
     <thead>
-    <tr>
-      <th>Lp.</th>
-      <th *ngFor="let header of report.tableHeader">{{ header }}</th>
-    </tr>
+      <tr>
+        <th *ngIf="showAddress">Country</th>
+        <th *ngIf="showAddress">City</th>
+        <th *ngIf="showAddress">Street</th>
+        <th *ngIf="showAddress">Zip Code</th>
+        <th>Min Price</th>
+        <th>Max Price</th>
+        <th>Date From</th>
+        <th>Date To</th>
+      </tr>
     </thead>
     <tbody>
-    <tr>
-      <td>1</td>
-      <td *ngFor="let header of report.tableHeader">Random</td>
-    </tr>
-
+      <tr>
+        <td *ngIf="showAddress">{{ formData.address?.country }}</td>
+        <td *ngIf="showAddress">{{ formData.address?.city }}</td>
+        <td *ngIf="showAddress">{{ formData.address?.street }}</td>
+        <td *ngIf="showAddress">{{ formData.address?.zipCode }}</td>
+        <td>{{ formData.price?.minPrice }}</td>
+        <td>{{ formData.price?.maxPrice }}</td>
+        <td>{{ formData.date?.startDate }}</td>
+        <td>{{ formData.date?.endDate }}</td>
+      </tr>
     </tbody>
   </table>
-
 </div>
-
-

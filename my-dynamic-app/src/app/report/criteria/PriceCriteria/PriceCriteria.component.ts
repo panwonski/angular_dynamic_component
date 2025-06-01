@@ -1,31 +1,38 @@
-import {Component, OnInit, Input} from "@angular/core";
-import {FormsModule} from "@angular/forms";
-import {CommonModule} from "@angular/common";
+import {
+  Component,
+  OnInit,
+  Input,
+  signal,
+  Signal,
+  effect,
+} from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { criteriaService } from '../../reportService/criteriaService';
 
 @Component({
-  selector: "date-criteria",
-  templateUrl: "./PriceCriteria.component.html",
-  styleUrls: ["./PriceCriteria.component.scss"],
+  selector: 'date-criteria',
+  templateUrl: './PriceCriteria.component.html',
+  styleUrls: ['./PriceCriteria.component.scss'],
   standalone: true,
-  imports: [
-    FormsModule, CommonModule
-  ],
+  imports: [FormsModule, CommonModule],
 })
 export class PriceCriteriaComponent implements OnInit {
-  minPrice: number = 0;
-  maxPrice: number = 1000;
+  @Input() config: any;
 
-  @Input() selectedMinPrice!: number | null;
-  @Input() selectedMaxPrice!: number | null;
+  minPrice = signal<number | null>(null);
+  maxPrice = signal<number | null>(null);
 
-
-
-
-  ngOnInit(): void {
-    console.log("PriceCriteriaComponent ngOnInit");
+  constructor(private criteria_Service: criteriaService) {
+    effect(() => {
+      this.criteria_Service.updatePriceCriteria({
+        minPrice: this.minPrice(),
+        maxPrice: this.maxPrice(),
+      });
+    });
   }
 
-  constructor() {
-    console.log("PriceCriteriaComponent initialized");
+  ngOnInit(): void {
+    console.log('PriceCriteriaComponent ngOnInit');
   }
 }
